@@ -1,16 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using WebApplication1.Entityes;
-using System.Text.Json.Nodes;
-using Azure;
-using System.Net;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Http;
-using System.Runtime.Serialization.Json;
-using System.Collections.Generic;
-using System.Text.Json;
-using Microsoft.Extensions.Options;
+using System.Net;
+using WebApplication1.Entityes;
 
 namespace WebApplication1.Pages
 {
@@ -95,14 +87,5 @@ namespace WebApplication1.Pages
             }
             return new BadRequestResult();
         }
-
-
-        public class MyClass
-        {
-            public string Key { get; set; }
-            public string Value { get; set; }
-        }
-
-
     }
 }
