@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div>Good example is: <i>https://httpbin.org/anything</i></div>
+    <div>
+        <form method="post">
+            <input type="text" value="@Model.targetUrl" name="urlString"/>
+            <button type="submit">Push me!</button>
+        </form>
+    </div>
+</div>
