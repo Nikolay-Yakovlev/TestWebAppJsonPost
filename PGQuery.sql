@@ -1,3 +1,14 @@
+drop database if exists "Test"
+create database "Test"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Russian_Russia.1251'
+    LC_CTYPE = 'Russian_Russia.1251'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
 drop table if exists "JsonFields";
 create table "JsonFields" (	
 	"FieldName" varchar (50) unique not null
