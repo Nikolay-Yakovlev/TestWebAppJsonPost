@@ -38,7 +38,7 @@ namespace WebApplication1.Pages
             try
             {
                 var settingsTargetUrl = await _appDbContext.Settings.FirstOrDefaultAsync(s => s.Name.Equals("targetUrl"));
-                if (!settingsTargetUrl.Value.Equals(urlString))
+                if (settingsTargetUrl != null && !settingsTargetUrl.Value.Equals(urlString))
                 {
                     settingsTargetUrl.Value = urlString;
                 }
@@ -48,44 +48,52 @@ namespace WebApplication1.Pages
                 _logger.LogError(ex.Message);
             }
 
-            HttpClient client = new HttpClient();
-            var response = await client.PostAsync(url, null);
-            if (response.StatusCode == HttpStatusCode.OK)
+            using (var client = new HttpClient())
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var fieldsList = await _appDbContext.JsonFields.ToListAsync();
-
-                foreach (var f in fieldsList)
-                {
-                    var start = responseContent.IndexOf(f.FieldName);
-                    var substrStart = responseContent[start..];
-                    var substrEndIndex =
-                        substrStart.IndexOf(",") == -1 ? substrStart.Length - 2 : substrStart.IndexOf(",");
-                    var strValue = substrStart[(substrStart.IndexOf(":") + 1)..substrEndIndex];
-
-                    var jData = new JsonData();
-                    jData.Name = f.FieldName;
-                    jData.Value = strValue.Replace("\"", "").Trim();
-                    try
-                    {
-                        await _appDbContext.AddAsync(jData);
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError(ex.Message);
-                    }
-                }
                 try
                 {
-                    await _appDbContext.SaveChangesAsync();
+                    var response = await client.PostAsync(url, null);
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        var responseContent = await response.Content.ReadAsStringAsync();
+                        var fieldsList = await _appDbContext.JsonFields.ToListAsync();
+
+                        foreach (var f in fieldsList)
+                        {
+                            var start = responseContent.IndexOf(f.FieldName);
+                            var substrStart = responseContent[start..];
+                            var substrEndIndex =
+                                substrStart.IndexOf(",") == -1 ? substrStart.Length - 2 : substrStart.IndexOf(",");
+                            var strValue = substrStart[(substrStart.IndexOf(":") + 1)..substrEndIndex];
+
+                            var jData = new JsonData();
+                            jData.Name = f.FieldName;
+                            jData.Value = strValue.Replace("\"", "").Trim();
+                            try
+                            {
+                                await _appDbContext.AddAsync(jData);
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogError(ex.Message);
+                            }
+                        }
+                        try
+                        {
+                            await _appDbContext.SaveChangesAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex.Message);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
                     _logger.LogError(ex.Message);
                 }
-                return RedirectToAction(nameof(OnGet));
+                return RedirectToAction("Get");
             }
-            return new BadRequestResult();
         }
     }
 }

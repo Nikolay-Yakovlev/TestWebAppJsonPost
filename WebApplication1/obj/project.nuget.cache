@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cYXL3cgbqApQvxvUmW7pgmT41x/8HGRN3AD0rc5op4aCXUq3B1eU9Gzrm3b3Zx+VM2g83tccUapHJwWPKuTxFg==",
+  "dgSpecHash": "uObtRrd6W2sQW7DJ5yKq3w3+2J5heNH9qB/nByxXmaS9LR6YqQAwJbSQEJe4sONfRQcR3ESpoKdtAEztMicTeg==",
   "success": true,
-  "projectFilePath": "D:\\C#\\Geointellect\\WebApplication1\\WebApplication1.csproj",
+  "projectFilePath": "D:\\C#\\TestWebAppJsonPost\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nik\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Nik\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

@@ -3308,11 +3308,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\Geointellect\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "D:\\C#\\TestWebAppJsonPost\\WebApplication1\\WebApplication1.csproj",
       "projectName": "WebApplication1",
-      "projectPath": "D:\\C#\\Geointellect\\WebApplication1\\WebApplication1.csproj",
+      "projectPath": "D:\\C#\\TestWebAppJsonPost\\WebApplication1\\WebApplication1.csproj",
       "packagesPath": "C:\\Users\\Nik\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\Geointellect\\WebApplication1\\obj\\",
+      "outputPath": "D:\\C#\\TestWebAppJsonPost\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
